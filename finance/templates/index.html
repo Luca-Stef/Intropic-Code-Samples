@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <p style="text-align:left"><b>Cash balance: </b> {{ cash }}</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Stock</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Market Capitalisation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in portfolio %}
+                {% if row["quantity"] > 0 %}
+                    <tr>
+                        <td>{{ row["stock"] }}</td>
+                        <td>{{ row["quantity"] }}</td>
+                        <td>{{ row["price"] }}</td>
+                        <td>{{ row["marketcap"] }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>Net acount value: </b>{{ net }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
